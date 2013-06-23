@@ -31,7 +31,7 @@ set statusline+=%=        "move to right
 set statusline+=%l/       "current line
 set statusline+=%-10L     "total line
 
-"commands
+"command entry
 set showcmd
 set cmdheight=2
 set wildmenu
@@ -41,7 +41,6 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-"Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 "bracket matching
