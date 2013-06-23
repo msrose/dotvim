@@ -13,8 +13,8 @@ set history=1000
 set t_Co=256
 colorscheme made_of_code
 highlight WarningMsg ctermbg=red
-highlight User1 ctermbg=blue ctermfg=black
-highlight User2 ctermfg=green ctermbg=darkgray
+highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
+highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 
 set autoindent
 set backspace=eol,indent,start
@@ -59,7 +59,7 @@ if has('autocmd')
   "set default sign column for use with git gutter
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  highlight SignColumn ctermbg=NONE
+  highlight SignColumn ctermbg=NONE guifg=NONE
 
   "remove extra whitespace on save
   autocmd BufWritePre * :%s/\s\+$//e
@@ -84,7 +84,7 @@ endif
 "change git gutter defaults
 let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
-highlight GitGutterChange ctermfg=green
+highlight GitGutterChange ctermfg=green guifg=green
 
 "plugin mappings
 nnoremap <silent> <leader>f :CtrlP<CR>
