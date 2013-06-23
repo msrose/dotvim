@@ -31,6 +31,7 @@ set statusline=%1*%{fugitive#statusline()}%*
 set statusline+=%2*\ %f\ %* "filename
 set statusline+=%y          "filetype
 set statusline+=%m          "modified flag
+set statusline+=%r          "read-only flag
 set statusline+=\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set statusline+=%=          "move to right
 set statusline+=%l/         "current line
