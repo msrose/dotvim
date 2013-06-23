@@ -22,6 +22,7 @@ For a particular plugin:
 
 For all plugins:
 
+        $ git submodule foreach git checkout master
         $ git submodule foreach git pull origin master
 
 ##Acknowledgements
@@ -30,4 +31,4 @@ Special thanks to:
 
 * Tim Pope: https://github.com/tpope
 * Andrew Neil and his amazing Vim Casts: http://vimcasts.org/
-* and flazz for his colourschemes: https://github.com/flazz/vim-colorschemes
+* Franco for his insane amount of colourschemes: https://github.com/flazz/vim-colorschemes
