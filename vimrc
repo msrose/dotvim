@@ -12,6 +12,9 @@ set number
 set history=1000
 set t_Co=256
 colorscheme made_of_code
+highlight WarningMsg ctermbg=red
+highlight User1 ctermbg=blue ctermfg=black
+highlight User2 ctermfg=green ctermbg=darkgray
 
 set autoindent
 set backspace=eol,indent,start
@@ -24,12 +27,14 @@ set linebreak
 
 "statusline
 set laststatus=2
-set statusline=%{fugitive#statusline()}
-set statusline+=\ %F      "filename
-set statusline+=\ -\ %y   "filetype
-set statusline+=%=        "move to right
-set statusline+=%l/       "current line
-set statusline+=%-10L     "total line
+set statusline=%1*%{fugitive#statusline()}%*
+set statusline+=%2*\ %f\ %* "filename
+set statusline+=%y          "filetype
+set statusline+=%m          "modified flag
+set statusline+=\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
+set statusline+=%=          "move to right
+set statusline+=%l/         "current line
+set statusline+=%-10L       "total line
 
 "command entry
 set showcmd
