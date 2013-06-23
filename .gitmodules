@@ -40,3 +40,6 @@
 [submodule "bundle/multiple-cursors"]
 	path = bundle/multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "bundle/matrix-screensaver"]
+	path = bundle/matrix-screensaver
+	url = https://github.com/uguu-org/vim-matrix-screensaver.git
