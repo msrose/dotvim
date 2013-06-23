@@ -95,6 +95,8 @@ nnoremap <silent> <leader>g :GundoToggle<CR>
 "custom mappings
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 inoremap jk <Esc>
 nnoremap j gj
 nnoremap k gk
