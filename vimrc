@@ -60,7 +60,7 @@ if has('autocmd')
   "set default sign column for use with git gutter
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  highlight SignColumn ctermbg=NONE guifg=NONE
+  highlight SignColumn ctermbg=NONE guibg=NONE
 
   "remove extra whitespace on save
   autocmd BufWritePre * :%s/\s\+$//e
