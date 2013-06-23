@@ -6,7 +6,7 @@ if has('autocmd')
   filetype plugin indent on
 endif
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable
+  syntax on
 endif
 set number
 set history=1000
