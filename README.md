@@ -1,6 +1,6 @@
 #dotvim
 
-Installation:
+To use these as your default vim settings and plugins:
 
         $ git clone https://github.com/msrose/dotvim ~/.vim
 
@@ -29,6 +29,6 @@ For all plugins:
 
 Special thanks to:
 
-* Tim Pope: https://github.com/tpope
+* Tim Pope for the awesome plugins he writes: https://github.com/tpope
 * Andrew Neil and his amazing Vim Casts: http://vimcasts.org/
 * Franco for his insane amount of color schemes: https://github.com/flazz/vim-colorschemes
