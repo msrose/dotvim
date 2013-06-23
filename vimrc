@@ -51,6 +51,9 @@ nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 "bracket matching
 set showmatch
 
+"autmatically update files on change
+set autoread
+
 "autocmd
 if has('autocmd')
   "set default sign column for use with git gutter
