@@ -52,16 +52,13 @@ if has('autocmd')
   "set default sign column for use with git gutter
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  highlight SignColumn ctermbg=none
+  highlight SignColumn ctermbg=NONE
 
   "remove extra whitespace on save
   autocmd BufWritePre * :%s/\s\+$//e
 
   "special settings for git commits
   autocmd FileType gitcommit set spell formatoptions+=a
-
-  "resource this file upon any changes
-  autocmd! BufWritePost .vimrc source $MYVIMRC
 endif
 
 "white space characters
@@ -82,17 +79,19 @@ let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green
 
-"leader mappings
+"plugin mappings
 nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
-nnoremap <silent> <leader>l :set list!<CR>
 
 "custom mappings
+nnoremap ; :
+nnoremap : ;
 inoremap jk <Esc>
 nnoremap j gj
 nnoremap k gk
-nnoremap ; :
-nnoremap : ;
 nnoremap K i<CR><Esc>k$
 nnoremap Y y$
+nnoremap <silent> <leader>l :set list!<CR>
+nnoremap <silent> <leader>v :source $MYVIMRC<CR>\|:set nohlsearch<CR>
+nnoremap <silent> <leader>ev :tabedit $MYVIMRC<CR>
