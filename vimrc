@@ -46,7 +46,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 
 "bracket matching
 set showmatch
@@ -97,5 +97,9 @@ nnoremap k gk
 nnoremap K i<CR><Esc>k$
 nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
-nnoremap <silent> <leader>v :source $MYVIMRC<CR>\|:set nohlsearch<CR>
+nnoremap <silent> <leader>v :source $MYVIMRC<CR>\|:set nohlsearch<CR><C-l>
 nnoremap <silent> <leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>

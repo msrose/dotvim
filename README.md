@@ -31,4 +31,4 @@ Special thanks to:
 
 * Tim Pope: https://github.com/tpope
 * Andrew Neil and his amazing Vim Casts: http://vimcasts.org/
-* Franco for his insane amount of colourschemes: https://github.com/flazz/vim-colorschemes
+* Franco for his insane amount of color schemes: https://github.com/flazz/vim-colorschemes
