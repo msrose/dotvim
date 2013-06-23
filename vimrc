@@ -2,8 +2,12 @@ set nocompatible
 if !exists('g:loaded_pathogen')
   execute pathogen#infect()
 endif
-filetype plugin indent on
-syntax enable
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
 set number
 set history=1000
 set t_Co=256
