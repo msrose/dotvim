@@ -87,6 +87,7 @@ highlight GitGutterChange ctermfg=green
 nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
+nnoremap <silent> <leader>g :GundoToggle<CR>
 
 "custom mappings
 nnoremap ; :
