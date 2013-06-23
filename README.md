@@ -1,8 +1,8 @@
 #dotvim
-===
+
 Installation:
 
-        $ git clone git@github.com:msrose/dotvim.git
+        $ git clone git@github.com:msrose/dotvim.git ~/.vim
 
 Create symbolic link:
 
