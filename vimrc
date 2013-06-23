@@ -79,7 +79,7 @@ let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green
 
 "leader mappings
-nnoremap <silent> <leader>f :CommandTFlush<CR>\|:CommandT<CR>
+nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
 nnoremap <silent> <leader>l :set list!<CR>
