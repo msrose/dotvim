@@ -88,7 +88,7 @@ let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
 
 "plugin mappings
-nnoremap <silent> <leader>f :CtrlP\ .<CR>
+nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
 nnoremap <silent> <leader>g :GundoToggle<CR>
