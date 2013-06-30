@@ -103,7 +103,7 @@ nnoremap k gk
 nnoremap K i<CR><Esc>k$
 nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
-nnoremap <silent> <leader>v :source $MYVIMRC<CR>\|:set nohlsearch<CR><C-l>
+nnoremap <silent> <leader>v :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <silent> <leader>s :set spell!<CR>
 nnoremap <C-j> <C-w><C-j>
