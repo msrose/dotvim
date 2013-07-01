@@ -12,7 +12,7 @@ set number
 set history=1000
 set t_Co=256
 colorscheme made_of_code
-highlight WarningMsg ctermbg=red
+highlight WarningMsg ctermbg=red guibg=red
 highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 
