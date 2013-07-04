@@ -97,7 +97,7 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-inoremap jk <Esc>
+inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
 nnoremap K i<CR><Esc>k$
