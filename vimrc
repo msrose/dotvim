@@ -58,16 +58,28 @@ set autoread
 
 "autocmd
 if has('autocmd')
-  "set default sign column for use with git gutter
-  autocmd BufEnter * sign define dummy
-  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  highlight SignColumn ctermbg=NONE guibg=NONE
+  augroup sign_column
+    autocmd!
 
-  "remove extra whitespace on save
-  autocmd BufWritePre * :%s/\s\+$//e
+    "set default sign column for use with git gutter
+    autocmd BufEnter * sign define dummy
+    autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+    highlight SignColumn ctermbg=NONE guibg=NONE
+  augroup END
 
-  "special settings for git commits
-  autocmd FileType gitcommit set spell formatoptions+=a
+  augroup white_space
+    autocmd!
+
+    "remove extra whitespace on save
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup END
+
+  augroup git_commit
+    autocmd!
+
+    "special settings for git commits
+    autocmd FileType gitcommit set spell formatoptions+=a
+  augroup END
 endif
 
 "white space characters
