@@ -1,3 +1,4 @@
+"basic settings {{{
 set nocompatible
 if !exists('g:loaded_pathogen')
   execute pathogen#infect()
@@ -10,12 +11,17 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 set number
 set history=1000
+"}}}
+
+"colorscheme {{{
 set t_Co=256
 colorscheme made_of_code
 highlight WarningMsg ctermbg=red guibg=red
 highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
+"}}}
 
+"indentation and tabs {{{
 set autoindent
 set backspace=eol,indent,start
 set expandtab
@@ -25,8 +31,9 @@ set softtabstop=2
 set tabstop=2
 set shiftround
 set linebreak
+"}}}
 
-"statusline
+"statusline {{{
 set laststatus=2
 set statusline=%1*%{fugitive#statusline()}%*
 set statusline+=%2*\ %f\ %* "filename
@@ -37,28 +44,33 @@ set statusline+=\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set statusline+=%=          "move to right
 set statusline+=%l/         "current line
 set statusline+=%-10L       "total line
+"}}}
 
-"command entry
+"command entry {{{
 set showcmd
 set cmdheight=2
 set wildmenu
+"}}}
 
-"searching
+"searching {{{
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
+"}}}
 
-"bracket matching
+"bracket matching {{{
 set showmatch
+"}}}
 
-"autmatically update files on change
+"automatically update files on change {{{
 set autoread
+"}}}
 
-"autocmd
+"autocmd {{{
 if has('autocmd')
-  augroup sign_column
+  augroup sign_column "{{{
     autocmd!
 
     "set default sign column for use with git gutter
@@ -66,46 +78,62 @@ if has('autocmd')
     autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
     highlight SignColumn ctermbg=NONE guibg=NONE
   augroup END
+  "}}}
 
-  augroup white_space
+  augroup white_space "{{{
     autocmd!
 
     "remove extra whitespace on save
     autocmd BufWritePre * :%s/\s\+$//e
   augroup END
+  "}}}
 
-  augroup git_commit
+  augroup filetype_gitcommit "{{{
     autocmd!
 
     "special settings for git commits
     autocmd FileType gitcommit set spell formatoptions+=a
   augroup END
-endif
+  "}}}
 
-"white space characters
+  augroup filetype_vim "{{{
+    autocmd!
+
+    "set the folding method
+    autocmd FileType vim setlocal foldmethod=marker
+  augroup END
+  "}}}
+endif
+"}}}
+
+"white space characters {{{
 if &listchars ==# 'eol:$'
   set listchars=tab:▸\ ,eol:¬
 endif
+"}}}
 
-"extra space while scrolling
+"extra space while scrolling {{{
 if !&scrolloff
   set scrolloff=1
 endif
 if !&sidescrolloff
   set sidescrolloff=5
 endif
+"}}}
 
-"change git gutter defaults
+"change git gutter defaults {{{
 let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
+"}}}
 
-"plugin mappings
+"plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
 nnoremap <silent> <leader>g :GundoToggle<CR>
+"}}}
 
-"custom mappings
+"custom mappings {{{
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
@@ -126,3 +154,4 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap - ddp
 nnoremap _ ddkP
+"}}}
