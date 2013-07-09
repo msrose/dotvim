@@ -127,6 +127,10 @@ let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
 "}}}
 
+"CtrlP custom ignore {{{
+let g:ctrlp_custom_ignore = 'vendor/*'
+"}}}
+
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
