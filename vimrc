@@ -152,6 +152,8 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <silent> <leader>s :set spell!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
+nnoremap <silent> <leader>d :redraw!<CR>
+nnoremap <silent> <leader>p :set paste!<CR>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
