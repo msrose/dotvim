@@ -150,10 +150,10 @@ nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <silent> <leader>s :set spell!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
-nnoremap <silent> <leader>d :redraw!<CR>
-nnoremap <silent> <leader>p :set paste!<CR>
+nnoremap <leader>s :set spell!<CR>\|:echo "Spell: " . &spell<CR>
+nnoremap <leader>d :redraw!<CR>
+nnoremap <leader>p :set paste!<CR>\|:echo "Paste: " . &paste<CR>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
