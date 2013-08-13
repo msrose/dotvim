@@ -159,6 +159,7 @@ nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>s :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>d :redraw!<CR>
 nnoremap <leader>p :set paste!<CR>\|:echo "Paste: " . &paste<CR>
+nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
