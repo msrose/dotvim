@@ -68,6 +68,10 @@ set showmatch
 set autoread
 "}}}
 
+"allow hidden buffers {{{
+set hidden
+"}}}
+
 "autocmd {{{
 if has('autocmd')
   augroup sign_column "{{{
