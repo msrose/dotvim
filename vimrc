@@ -141,7 +141,6 @@ let g:vim_markdown_folding_disabled=1
 
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>t :TlistToggle<CR>
 nnoremap <silent> <leader>g :GundoToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
 "}}}
