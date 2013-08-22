@@ -96,7 +96,6 @@ set hidden
 if has('autocmd')
   augroup sign_column "{{{
     autocmd!
-
     "set default sign column for use with git gutter
     autocmd BufEnter * sign define dummy
     autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
@@ -106,7 +105,6 @@ if has('autocmd')
 
   augroup white_space "{{{
     autocmd!
-
     "remove extra whitespace on save
     autocmd BufWritePre * :%s/\s\+$//e
   augroup END
@@ -114,7 +112,6 @@ if has('autocmd')
 
   augroup filetype_gitcommit "{{{
     autocmd!
-
     "special settings for git commits
     autocmd FileType gitcommit set spell formatoptions+=a
   augroup END
@@ -122,7 +119,6 @@ if has('autocmd')
 
   augroup filetype_vim "{{{
     autocmd!
-
     "set the folding method
     autocmd FileType vim setlocal foldmethod=marker
   augroup END
