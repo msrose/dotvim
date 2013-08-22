@@ -178,10 +178,10 @@ nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <silent> <leader>r :set relativenumber!<CR>
+nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <leader>s :set spell!<CR>\|:echo "Spell: " . &spell<CR>
-set pastetoggle=<F5>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
+set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
