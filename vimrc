@@ -21,16 +21,21 @@ highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 "}}}
 
-"for running gVim in Windows {{{
-if has("gui_running") && (has("win32") || has("win64"))
-  set encoding=utf8
-  cd ~
-  set directory+=$HOME
-  set guifont=Lucida\ Console:h12
-  autocmd GUIEnter * simalt ~x
-  set guioptions-=T
-  set guioptions-=m
+"for running gVim {{{
+if has("gui_running")
   highlight Comment gui=NONE
+  set guioptions-=T
+
+  "Windows specific {{{
+  if has("win32") || has("win64")
+    set encoding=utf8
+    cd ~
+    autocmd GUIEnter * simalt ~x
+    set guioptions-=m
+    set directory+=$HOME
+    set guifont=Lucida\ Console:h12
+  endif
+  "}}}
 endif
 "}}}
 
