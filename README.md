@@ -2,32 +2,44 @@
 
 To use these as your default vim settings and plugins:
 
-        $ git clone https://github.com/msrose/dotvim ~/.vim
+```Shell
+$ git clone https://github.com/msrose/dotvim ~/.vim
+```
 
 Create symbolic link:
 
-        $ ln -s ~/.vim/vimrc ~/.vimrc
+```Shell
+$ ln -s ~/.vim/vimrc ~/.vimrc
+```
 
 Initialize submodules:
 
-        $ cd ~/.vim
-        $ git submodule update --init
+```Shell
+$ cd ~/.vim
+$ git submodule update --init
+```
 
 On Windows, download git and use the bash terminal to clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
 
-        C:\Users\Name>mklink /h _vimrc vimfiles\vimrc
+```Shell
+C:\Users\Name> mklink /h _vimrc vimfiles\vimrc
+```
 
 ##Updating submodules
 
 For a particular plugin:
 
-        $ cd ~/.vim/bundle/plugin-name
-        $ git pull origin master
+```Shell
+$ cd ~/.vim/bundle/plugin-name
+$ git pull origin master
+```
 
 For all plugins:
 
-        $ git submodule foreach git checkout master
-        $ git submodule foreach git pull origin master
+```Shell
+$ git submodule foreach git checkout master
+$ git submodule foreach git pull origin master
+```
 
 ##Acknowledgements
 
