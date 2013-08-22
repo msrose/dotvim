@@ -181,7 +181,7 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :call ToggleRelativeNumber()<CR>
-nnoremap <leader>s :set spell!<CR>\|:echo "Spell: " . &spell<CR>
+nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
