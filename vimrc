@@ -34,6 +34,8 @@ if has("gui_running")
     set guioptions-=m
     set directory+=$HOME
     set guifont=Lucida\ Console:h12
+  else
+    set guifont=Ubuntu\ Mono\ 14
   endif
   "}}}
 endif
