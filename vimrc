@@ -23,6 +23,7 @@ highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 
 "for running gVim in Windows {{{
 if has("gui_running") && (has("win32") || has("win64"))
+  set encoding=utf8
   cd ~
   set directory+=$HOME
   set guifont=Lucida\ Console:h12
@@ -123,7 +124,7 @@ endif
 "}}}
 
 "white space characters {{{
-if !has("win32") && !has("win64") && &listchars ==# 'eol:$'
+if &listchars ==# 'eol:$'
   set listchars=tab:▸\ ,eol:¬
 endif
 "}}}
