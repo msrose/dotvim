@@ -13,6 +13,10 @@ Initialize submodules:
         $ cd ~/.vim
         $ git submodule update --init
 
+On Windows, download git and use the bash terminal to clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
+
+        C:\Users\Name>mklink /h _vimrc vimfiles\vimrc
+
 ##Updating submodules
 
 For a particular plugin:

@@ -21,6 +21,18 @@ highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 "}}}
 
+"for running gVim in Windows {{{
+if has("gui_running") && (has("win32") || has("win64"))
+  cd ~
+  set directory+=$HOME
+  set guifont=Lucida\ Console:h12
+  autocmd GUIEnter * simalt ~x
+  set guioptions-=T
+  set guioptions-=m
+  highlight Comment gui=NONE
+endif
+"}}}
+
 "indentation and tabs {{{
 set autoindent
 set backspace=eol,indent,start
@@ -111,7 +123,7 @@ endif
 "}}}
 
 "white space characters {{{
-if &listchars ==# 'eol:$'
+if !has("win32") && !has("win64") && &listchars ==# 'eol:$'
   set listchars=tab:▸\ ,eol:¬
 endif
 "}}}
