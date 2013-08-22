@@ -34,8 +34,13 @@ if has("gui_running")
     set guioptions-=m
     set directory+=$HOME
     set guifont=Lucida\ Console:h12
-  else
-    set guifont=Ubuntu\ Mono\ 14
+  elseif has("unix")
+    let os = substitute(system("uname"), "\n", "", "g")
+    if os ==# "Linux"
+      silent! set guifont=Ubuntu\ Mono\ 14
+    elseif os == "Darwin"
+      silent! set guifont=Monaco:h16
+    endif
   endif
   "}}}
 endif
