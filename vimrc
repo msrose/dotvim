@@ -25,13 +25,13 @@ highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 if has("gui_running")
   highlight Comment gui=NONE
   set guioptions-=T
+  set guioptions-=m
 
-  "Windows specific {{{
+  "OS specific {{{
   if has("win32") || has("win64")
     set encoding=utf8
     cd ~
     autocmd GUIEnter * simalt ~x
-    set guioptions-=m
     set directory+=$HOME
     set guifont=Lucida\ Console:h12
   elseif has("unix")
