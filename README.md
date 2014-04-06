@@ -38,8 +38,9 @@ For all plugins:
 
 ```Shell
 $ git submodule foreach git checkout master
-$ git submodule foreach git pull origin master
+$ git submodule foreach 'git pull origin master || :'
 ```
+Adding `|| :` to the end forces the command to always return a 0 exit status. Therefore, if a pull from one submodule fails, the foreach continues to execute regardless, and the pull can continue for the rest of the submodules.
 
 ##Acknowledgements
 
