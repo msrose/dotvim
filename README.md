@@ -22,7 +22,7 @@ $ git submodule update --init
 On Windows, download git and use the bash terminal to clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
 
 ```Shell
-C:\Users\Name> mklink /h _vimrc vimfiles\vimrc
+C:\Users\Name> mklink _vimrc vimfiles\vimrc
 ```
 
 ##Updating submodules
