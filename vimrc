@@ -11,6 +11,10 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 set number
 set history=1000
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 "}}}
 
 "colorscheme {{{
