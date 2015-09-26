@@ -128,6 +128,13 @@ if has('autocmd')
     autocmd FileType vim setlocal foldmethod=marker
   augroup END
   "}}}
+
+  augroup filetype_wlpp "{{{
+    autocmd!
+    "set the folding method
+    autocmd BufEnter *.wlpp  set filetype=cpp
+  augroup END
+  "}}}
 endif
 "}}}
 
