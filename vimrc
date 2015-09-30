@@ -193,6 +193,7 @@ nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :call ToggleRelativeNumber()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
+nnoremap <leader>sy :SyntasticToggleMode<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <leader>* :execute "%s/" . expand("<cword>") . "//gn"<CR><C-o>
 set pastetoggle=<F5>
