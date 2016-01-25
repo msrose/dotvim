@@ -31,9 +31,6 @@
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/multiple-cursors"]
-	path = bundle/multiple-cursors
-	url = https://github.com/terryma/vim-multiple-cursors.git
 [submodule "bundle/matrix-screensaver"]
 	path = bundle/matrix-screensaver
 	url = https://github.com/uguu-org/vim-matrix-screensaver.git
@@ -55,12 +52,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/plasticboy/vim-markdown
-[submodule "bundle/coffee-script"]
-	path = bundle/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script
-[submodule "bundle/ucpp"]
-	path = bundle/ucpp
-	url = https://github.com/flxf/uCpp.vim
 [submodule "bundle/javascript"]
 	path = bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
