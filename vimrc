@@ -171,6 +171,23 @@ let g:ctrlp_custom_ignore = 'vendor/*'
 let g:vim_markdown_folding_disabled=1
 "}}}
 
+"JSX highlighting everywhere {{{
+let g:jsx_ext_required=0
+"}}}
+
+"{{{ Syntastic eslint checking
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Use local eslint, if you can
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+"}}}
+
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>g :GundoToggle<CR>
