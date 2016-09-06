@@ -71,6 +71,7 @@ set statusline+=%m          "modified flag
 set statusline+=%r          "read-only flag
 set statusline+=\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set statusline+=%=          "move to right
+set statusline+=%c:         "current column
 set statusline+=%l/         "current line
 set statusline+=%-10L       "total line
 "}}}
