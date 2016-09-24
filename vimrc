@@ -168,12 +168,17 @@ highlight GitGutterChange ctermfg=green guifg=green
 let g:ctrlp_custom_ignore = 'vendor/*'
 "}}}
 
-"Disable default folding in markdown {{{
-let g:vim_markdown_folding_disabled=1
+"Syntastic C++11 {{{
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 "}}}
 
-"JSX highlighting everywhere {{{
-let g:jsx_ext_required=0
+"JSX {{{
+let g:jsx_ext_required = 0
+"}}}
+
+"Disable default folding in markdown {{{
+let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ Syntastic eslint checking
