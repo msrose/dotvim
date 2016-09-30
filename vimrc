@@ -241,3 +241,14 @@ function! ToggleRelativeNumber()
   endif
 endfunction
 "}}}
+
+"avoid webpack livereload issues {{{
+set backupcopy=yes
+"}}}
+
+"persistent undo {{{
+if exists('+undodir')
+    set undodir=$HOME/.vim/undodir
+    set undofile
+endif
+"}}}
