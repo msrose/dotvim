@@ -1,4 +1,4 @@
-#dotvim
+# dotvim
 
 To use these as your default vim settings and plugins:
 
@@ -25,7 +25,7 @@ On Windows, download git and use the bash terminal to clone the repo into `~/vim
 C:\Users\Name> mklink _vimrc vimfiles\vimrc
 ```
 
-##Updating submodules
+## Updating submodules
 
 For a particular plugin:
 
@@ -42,7 +42,7 @@ $ git submodule foreach 'git pull origin master || :'
 ```
 Adding `|| :` to the end forces the command to always return a 0 exit status. Therefore, if a pull from one submodule fails, the foreach continues to execute regardless, and the pull can continue for the rest of the submodules.
 
-##Acknowledgements
+## Acknowledgements
 
 Special thanks to:
 
