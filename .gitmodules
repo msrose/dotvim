@@ -82,3 +82,6 @@
 [submodule "bundle/vim-es6"]
 	path = bundle/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
+[submodule "bundle/vim-css3-syntax"]
+	path = bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax
