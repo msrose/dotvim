@@ -182,7 +182,7 @@ let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ Syntastic eslint checking
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 " Use local eslint, if you can
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
@@ -191,6 +191,15 @@ if matchstr(local_eslint, "^\/\\w") == ''
 endif
 if executable(local_eslint)
     let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+" Use local flow, if you can
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow = getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+    let g:syntastic_javascript_flow_exec = local_flow
 endif
 "}}}
 
