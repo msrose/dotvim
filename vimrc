@@ -178,7 +178,11 @@ let g:jsx_ext_required = 0
 "}}}
 
 "Disable default folding in markdown {{{
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+"}}}
+
+"Enable flow syntax highlighting {{{
+let g:javascript_plugin_flow = 1
 "}}}
 
 "{{{ Syntastic eslint checking
