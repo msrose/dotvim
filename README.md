@@ -2,29 +2,27 @@
 
 To use these as your default vim settings and plugins:
 
-```Shell
+```
 $ git clone https://github.com/msrose/dotvim ~/.vim
 ```
 
-Create symbolic link:
-
-```Shell
-$ ln -s ~/.vim/vimrc ~/.vimrc
-```
-
-On Windows, clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
-
-```Shell
-C:\Users\Name> mklink _vimrc vimfiles\vimrc
-```
-
-## Install Plugins
+## MacOS and Ubuntu
 
 Run the install script:
 
-```Shell
+```
 bash ~/.vim/install.sh
 ```
+
+## Windows
+
+On Windows, clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
+
+```
+C:\Users\Name> mklink _vimrc vimfiles\vimrc
+```
+
+## Plugins
 
 Open vim and execute `:PlugInstall`
 
