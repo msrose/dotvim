@@ -12,17 +12,23 @@ Create symbolic link:
 $ ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
-Install plugins:
-
-Open vim and execute `:PlugInstall`
-
-See the [plugged documentation](https://github.com/junegunn/vim-plug#commands) for other plugin management commands.
-
-On Windows, download git and use the bash terminal to clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
+On Windows, clone the repo into `~/vimfiles`. Then run a command prompt as administrator, and create the symbolic link as follows:
 
 ```Shell
 C:\Users\Name> mklink _vimrc vimfiles\vimrc
 ```
+
+## Install Plugins
+
+Run the install script:
+
+```Shell
+bash ~/.vim/install.sh
+```
+
+Open vim and execute `:PlugInstall`
+
+See the [plug documentation](https://github.com/junegunn/vim-plug#commands) for other plugin management commands.
 
 ## Acknowledgements
 
