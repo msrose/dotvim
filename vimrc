@@ -154,7 +154,7 @@ if has('autocmd')
   augroup filetype_gitcommit "{{{
     autocmd!
     "special settings for git commits
-    autocmd FileType gitcommit set spell formatoptions+=a
+    autocmd FileType gitcommit set spell
   augroup END
   "}}}
 
