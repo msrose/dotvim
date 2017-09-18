@@ -171,7 +171,11 @@ highlight GitGutterChange ctermfg=green guifg=green
 "}}}
 
 "CtrlP custom ignore {{{
-let g:ctrlp_custom_ignore = 'vendor/*'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](node_modules|coverage)',
+  \ 'file': '',
+  \ 'link': '',
+  \ }
 "}}}
 
 "Syntastic C++11 {{{
