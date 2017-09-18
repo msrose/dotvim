@@ -85,7 +85,6 @@ set wildmenu
 "searching {{{
 set ignorecase
 set smartcase
-set hlsearch
 set incsearch
 nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 "}}}
@@ -116,7 +115,7 @@ if has('autocmd')
   augroup white_space "{{{
     autocmd!
     "remove extra whitespace on save
-    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * call StripTrailingWhitespace()
   augroup END
   "}}}
 
@@ -137,7 +136,14 @@ if has('autocmd')
   augroup filetype_wlpp "{{{
     autocmd!
     "set the folding method
-    autocmd BufEnter *.wlpp  set filetype=cpp
+    autocmd BufEnter *.wlpp set filetype=cpp
+  augroup END
+  "}}}
+
+  augroup filetype_md "{{{
+    autocmd!
+    "set the folding method
+    autocmd FileType markdown let b:no_strip_whitespace=1
   augroup END
   "}}}
 endif
@@ -185,8 +191,9 @@ let g:vim_markdown_folding_disabled = 1
 let g:javascript_plugin_flow = 1
 "}}}
 
-"{{{ Syntastic eslint checking
+"Syntastic eslint checking {{{
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
+"}}}
 
 " Use local eslint, if you can
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
@@ -196,6 +203,7 @@ endif
 if executable(local_eslint)
     let g:syntastic_javascript_eslint_exec = local_eslint
 endif
+"}}}
 
 " Use local flow, if you can
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
@@ -248,10 +256,17 @@ function! ToggleRelativeNumber()
   if has("gui_running")
     set relativenumber!
   elseif &relativenumber
-    set number
+    set norelativenumber
   else
     set relativenumber
   endif
+endfunction
+
+function! StripTrailingWhitespace()
+  if exists('b:no_strip_whitespace')
+    return
+  endif
+  %s/\s\+$//e
 endfunction
 "}}}
 
