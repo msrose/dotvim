@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
-Plug 'vim-scripts/Auto-Pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
