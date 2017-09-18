@@ -221,7 +221,6 @@ endif
 
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>g :GundoToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
 "}}}
 
@@ -283,4 +282,8 @@ if exists('+undodir')
     set undodir=$HOME/.vim/undodir
     set undofile
 endif
+"}}}
+
+"put swap files in central location {{{
+set directory=$HOME/.vim/swapdir
 "}}}
