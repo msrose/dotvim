@@ -195,6 +195,10 @@ let g:vim_markdown_folding_disabled = 1
 let g:javascript_plugin_flow = 1
 "}}}
 
+"Enable JSDoc syntax highlighting {{{
+let g:javascript_plugin_jsdoc = 1
+"}}}
+
 "Syntastic eslint checking {{{
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 "}}}
@@ -222,6 +226,12 @@ endif
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
+nnoremap <silent> <leader>b :BufExplorerHorizontalSplit<CR>
+"Remove the leader mappings that BufExplorer adds
+silent! nunmap <leader>bv
+silent! nunmap <leader>bs
+silent! nunmap <leader>bt
+silent! nunmap <leader>be
 "}}}
 
 "custom mappings {{{
