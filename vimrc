@@ -135,14 +135,14 @@ if has('autocmd')
 
   augroup filetype_wlpp "{{{
     autocmd!
-    "set the folding method
+    "wlpp is cpp subset
     autocmd BufEnter *.wlpp set filetype=cpp
   augroup END
   "}}}
 
   augroup filetype_md "{{{
     autocmd!
-    "set the folding method
+    "don't strip whitespace in markdown files
     autocmd FileType markdown let b:no_strip_whitespace=1
   augroup END
   "}}}
