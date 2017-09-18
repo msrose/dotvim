@@ -248,7 +248,7 @@ nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
-nnoremap <silent> <leader>r :call ToggleRelativeNumber()<CR>
+nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>sy :SyntasticToggleMode<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
@@ -265,16 +265,6 @@ nnoremap ]A :last<CR>
 "}}}
 
 "custom functions {{{
-function! ToggleRelativeNumber()
-  if has("gui_running")
-    set relativenumber!
-  elseif &relativenumber
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunction
-
 function! StripTrailingWhitespace()
   if exists('b:no_strip_whitespace')
     return
