@@ -29,4 +29,6 @@ Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'flowtype/vim-flow'
+Plug 'embear/vim-localvimrc'
+Plug 'sgur/vim-editorconfig'
 call plug#end()
