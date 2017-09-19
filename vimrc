@@ -233,12 +233,7 @@ endif
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
-nnoremap <silent> <leader>b :ToggleBufExplorer<CR>
-"Remove the leader mappings that BufExplorer adds
-silent! nunmap <leader>bv
-silent! nunmap <leader>bs
-silent! nunmap <leader>bt
-silent! nunmap <leader>be
+nnoremap <silent> <space> :ToggleBufExplorer<CR>
 "}}}
 
 "custom mappings {{{
