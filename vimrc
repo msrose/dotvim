@@ -1,6 +1,7 @@
 "basic settings {{{
 set nocompatible
 
+"source the plugins file
 source $HOME/.vim/plug.vim
 
 if has('autocmd')
@@ -234,6 +235,8 @@ endif
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
 nnoremap <silent> <space> :ToggleBufExplorer<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
 
 "custom mappings {{{
