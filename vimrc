@@ -148,6 +148,9 @@ if has('autocmd')
     autocmd!
     "don't strip whitespace in markdown files
     autocmd FileType markdown let b:no_strip_whitespace=1
+    "TODO: find out how to make this an iabbrev instead
+    "(seems like auto-pairs breaks abbrevs)
+    autocmd FileType markdown :inoremap <buffer> --- &mdash;
   augroup END
   "}}}
 endif
