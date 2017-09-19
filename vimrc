@@ -249,6 +249,7 @@ nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC<CR>
+nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
