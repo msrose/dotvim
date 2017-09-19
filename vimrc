@@ -86,6 +86,10 @@ set wildmenu
 set ignorecase
 set smartcase
 set incsearch
+"set highlighting search terms...
+set hlsearch
+"...but don't do it every time we source the vimrc
+nohlsearch
 nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 "}}}
 
@@ -129,7 +133,7 @@ if has('autocmd')
   augroup filetype_vim "{{{
     autocmd!
     "set the folding method
-    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldmethod=marker nofoldenable
   augroup END
   "}}}
 
@@ -203,7 +207,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 "}}}
 
-" Use local eslint, if you can
+"Use local eslint, if you can {{{
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
 if matchstr(local_eslint, "^\/\\w") == ''
     let local_eslint = getcwd() . "/" . local_eslint
@@ -213,7 +217,7 @@ if executable(local_eslint)
 endif
 "}}}
 
-" Use local flow, if you can
+"Use local flow, if you can {{{
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
 if matchstr(local_flow, "^\/\\w") == ''
     let local_flow = getcwd() . "/" . local_flow
@@ -226,7 +230,7 @@ endif
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
-nnoremap <silent> <leader>b :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <leader>b :ToggleBufExplorer<CR>
 "Remove the leader mappings that BufExplorer adds
 silent! nunmap <leader>bv
 silent! nunmap <leader>bs
@@ -246,7 +250,7 @@ nnoremap K i<CR><Esc>k$
 nnoremap Y y$
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
-nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
@@ -262,6 +266,10 @@ nnoremap [a :previous<CR>
 nnoremap ]a :next<CR>
 nnoremap [A :first<CR>
 nnoremap ]A :last<CR>
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [B :bfirst<CR>
+nnoremap ]B :blast<CR>
 "}}}
 
 "custom functions {{{
