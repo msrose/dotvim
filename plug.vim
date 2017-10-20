@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/plugged')
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-endwise'
@@ -30,4 +30,5 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'flowtype/vim-flow'
 Plug 'embear/vim-localvimrc'
 Plug 'sgur/vim-editorconfig'
+Plug 'styled-components/vim-styled-components'
 call plug#end()

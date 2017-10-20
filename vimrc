@@ -178,12 +178,14 @@ let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
 "}}}
 
-"CtrlP custom ignore {{{
+"CtrlP settings {{{
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](node_modules|coverage)',
-  \ 'file': '',
+  \ 'file': '\v\.(pyc)$',
   \ 'link': '',
   \ }
+"Fix slow backspace
+let g:ctrlp_lazy_update = 1
 "}}}
 
 "Syntastic C++11 {{{
@@ -209,6 +211,10 @@ let g:javascript_plugin_jsdoc = 1
 
 "Syntastic eslint checking {{{
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
+"}}}
+
+"Syntastic python checking {{{
+let g:syntastic_python_checkers = ['python', 'flake8']
 "}}}
 
 "Use local eslint, if you can {{{
@@ -296,4 +302,10 @@ endif
 
 "put swap files in central location {{{
 set directory=$HOME/.vim/swapdir
+"}}}
+
+"highlight at 80 chars {{{
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
 "}}}
