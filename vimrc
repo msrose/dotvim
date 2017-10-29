@@ -64,13 +64,26 @@ set linebreak
 "}}}
 
 "statusline {{{
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? '' : printf(
+    \   'Errors: %d, Warnings: %d',
+    \   all_errors,
+    \   all_non_errors
+    \)
+endfunction
+
 set laststatus=2
 set statusline=%1*%{fugitive#statusline()}%*
 set statusline+=%2*\ %f\ %* "filename
 set statusline+=%y          "filetype
 set statusline+=%m          "modified flag
 set statusline+=%r          "read-only flag
-set statusline+=\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
+set statusline+=\ %#warningmsg#%{LinterStatus()}%*
 set statusline+=%=          "move to right
 set statusline+=%c:         "current column
 set statusline+=%l/         "current line
@@ -188,11 +201,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_lazy_update = 1
 "}}}
 
-"Syntastic C++11 {{{
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-"}}}
-
 "JSX {{{
 let g:jsx_ext_required = 0
 "}}}
@@ -207,34 +215,6 @@ let g:javascript_plugin_flow = 1
 
 "Enable JSDoc syntax highlighting {{{
 let g:javascript_plugin_jsdoc = 1
-"}}}
-
-"Syntastic eslint checking {{{
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-"}}}
-
-"Syntastic python checking {{{
-let g:syntastic_python_checkers = ['python', 'flake8']
-"}}}
-
-"Use local eslint, if you can {{{
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-    let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-    let g:syntastic_javascript_eslint_exec = local_eslint
-endif
-"}}}
-
-"Use local flow, if you can {{{
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow = getcwd() . "/" . local_flow
-endif
-if executable(local_flow)
-    let g:syntastic_javascript_flow_exec = local_flow
-endif
 "}}}
 
 "plugin mappings {{{
@@ -262,7 +242,6 @@ nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
-nnoremap <leader>sy :SyntasticToggleMode<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <leader>* :execute "%s/" . expand("<cword>") . "//gn"<CR><C-o>
 set pastetoggle=<F5>
