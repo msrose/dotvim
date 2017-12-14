@@ -31,4 +31,5 @@ Plug 'embear/vim-localvimrc'
 Plug 'sgur/vim-editorconfig'
 Plug 'styled-components/vim-styled-components'
 Plug 'w0rp/ale'
+Plug 'ElmCast/elm-vim'
 call plug#end()
