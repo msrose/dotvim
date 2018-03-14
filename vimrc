@@ -226,8 +226,15 @@ nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
 
-"git grep and open quickfix window{{{
+"git grep with fugitive and open quickfix window {{{
 command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
+"}}}
+
+"git grep with fzf for fuzzy searching through contents {{{
+command! -bang -nargs=* FZFGg
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 "}}}
 
 "custom mappings {{{
@@ -247,6 +254,7 @@ nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
+nnoremap <silent> <leader>f :FZFGg<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <C-p> :FZFGFiles<CR>
