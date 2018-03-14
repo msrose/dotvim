@@ -167,6 +167,13 @@ if has('autocmd')
     autocmd FileType markdown :inoremap <buffer> --- &mdash;
   augroup END
   "}}}
+
+  augroup quickfix "{{{
+    autocmd!
+    "use <C-t> to open quickfix entry in new tab
+    autocmd FileType qf nnoremap <buffer> <C-t> <C-W><Enter><C-W>T
+  augroup END
+  "}}}
 endif
 "}}}
 
@@ -219,6 +226,10 @@ nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
 
+"git grep and open quickfix window{{{
+command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
+"}}}
+
 "custom mappings {{{
 nnoremap ; :
 nnoremap : ;
@@ -235,9 +246,9 @@ nnoremap <silent> <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
+nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
-nnoremap <leader>* :execute "%s/" . expand("<cword>") . "//gn"<CR><C-o>
 nnoremap <C-p> :FZFGFiles<CR>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
@@ -256,6 +267,7 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
+nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
 "custom functions {{{
@@ -265,6 +277,15 @@ function! StripTrailingWhitespace()
   endif
   %s/\s\+$//e
 endfunction
+
+function! QuickfixToggle() "{{{
+    let nr = winnr("$")
+    cwindow
+    let nr2 = winnr("$")
+    if nr == nr2
+        cclose
+    endif
+endfunction "}}}
 "}}}
 
 "avoid webpack livereload issues {{{
