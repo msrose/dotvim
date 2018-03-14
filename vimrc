@@ -191,16 +191,6 @@ let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
 "}}}
 
-"CtrlP settings {{{
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](node_modules|coverage)',
-  \ 'file': '\v\.(pyc)$',
-  \ 'link': '',
-  \ }
-"Fix slow backspace
-let g:ctrlp_lazy_update = 1
-"}}}
-
 "JSX {{{
 let g:jsx_ext_required = 0
 "}}}
@@ -215,6 +205,10 @@ let g:javascript_plugin_flow = 1
 
 "Enable JSDoc syntax highlighting {{{
 let g:javascript_plugin_jsdoc = 1
+"}}}
+
+"FZF prefix {{{
+let g:fzf_command_prefix = 'FZF'
 "}}}
 
 "plugin mappings {{{
@@ -244,6 +238,7 @@ nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <leader>* :execute "%s/" . expand("<cword>") . "//gn"<CR><C-o>
+nnoremap <C-p> :FZFGFiles<CR>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
