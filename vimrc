@@ -278,6 +278,7 @@ nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
 nnoremap <C-f> :Gg <cword><CR>
+nnoremap <Backspace> <C-^>
 "}}}
 
 "custom functions {{{
