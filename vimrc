@@ -172,6 +172,8 @@ if has('autocmd')
     autocmd!
     "use <C-t> to open quickfix entry in new tab
     autocmd FileType qf nnoremap <buffer> <C-t> <C-W><Enter><C-W>T
+    "always show quickfix window at full width
+    autocmd FileType qf wincmd J
   augroup END
   "}}}
 endif
