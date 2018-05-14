@@ -220,14 +220,6 @@ let g:javascript_plugin_jsdoc = 1
 let g:fzf_command_prefix = 'FZF'
 "}}}
 
-"plugin mappings {{{
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>t\| :Tab/\|<CR>
-nnoremap <silent> <space> :ToggleBufExplorer<CR>
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-"}}}
-
 "git grep with fugitive and open quickfix window {{{
 command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
 "}}}
@@ -237,6 +229,17 @@ command! -bang -nargs=* FZFGg
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+"}}}
+
+"plugin mappings {{{
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>t\| :Tab/\|<CR>
+nnoremap <silent> <leader>b :ToggleBufExplorer<CR>
+silent! unmap <leader>bv
+silent! unmap <leader>bs
+nnoremap <silent> <leader>f :FZFGg<CR>
+nnoremap <C-p> :FZFGFiles<CR>
+nnoremap <space> :FZFBuffers<CR>
 "}}}
 
 "custom mappings {{{
@@ -256,10 +259,8 @@ nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
-nnoremap <silent> <leader>f :FZFGg<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
-nnoremap <C-p> :FZFGFiles<CR>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
@@ -277,6 +278,10 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]Q :clast<CR>
 nnoremap <C-f> :Gg <cword><CR>
 nnoremap <Backspace> <C-^>
 "}}}
