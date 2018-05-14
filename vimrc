@@ -234,9 +234,7 @@ command! -bang -nargs=* FZFGg
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>t\| :Tab/\|<CR>
-nnoremap <silent> <leader>b :ToggleBufExplorer<CR>
-silent! unmap <leader>bv
-silent! unmap <leader>bs
+nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>f :FZFGg<CR>
 nnoremap <C-p> :FZFGFiles<CR>
 nnoremap <space> :FZFBuffers<CR>
