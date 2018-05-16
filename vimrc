@@ -85,7 +85,8 @@ set statusline+=%m          "modified flag
 set statusline+=%r          "read-only flag
 set statusline+=\ %#warningmsg#%{LinterStatus()}%*
 set statusline+=%=          "move to right
-set statusline+=%c:         "current column
+set statusline+=%{gutentags#statusline()}
+set statusline+=\ %c:       "current column
 set statusline+=%l/         "current line
 set statusline+=%-10L       "total line
 "}}}
@@ -218,6 +219,10 @@ let g:javascript_plugin_jsdoc = 1
 
 "FZF prefix {{{
 let g:fzf_command_prefix = 'FZF'
+"}}}
+
+"Gutentags file list {{{
+let g:gutentags_file_list_command = 'git ls-files'
 "}}}
 
 "git grep with fugitive and open quickfix window {{{
