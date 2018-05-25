@@ -64,19 +64,6 @@ set linebreak
 "}}}
 
 "statusline {{{
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? '' : printf(
-    \   'Errors: %d, Warnings: %d',
-    \   all_errors,
-    \   all_non_errors
-    \)
-endfunction
-
 set laststatus=2
 set statusline=%1*%{fugitive#statusline()}%*
 set statusline+=%2*\ %f\ %* "filename
@@ -105,7 +92,6 @@ set incsearch
 set hlsearch
 "...but don't do it every time we source the vimrc
 nohlsearch
-nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 "}}}
 
 "bracket matching {{{
@@ -118,6 +104,42 @@ set autoread
 
 "allow hidden buffers {{{
 set hidden
+"}}}
+
+"white space characters {{{
+if &listchars ==# 'eol:$'
+  set listchars=tab:▸\ ,eol:¬
+endif
+"}}}
+
+"extra space while scrolling {{{
+if !&scrolloff
+  set scrolloff=3
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+"}}}
+
+"avoid webpack livereload issues {{{
+set backupcopy=yes
+"}}}
+
+"persistent undo {{{
+if exists('+undodir')
+    set undodir=$HOME/.vim/undodir
+    set undofile
+endif
+"}}}
+
+"put swap files in central location {{{
+set directory=$HOME/.vim/swapdir
+"}}}
+
+"highlight at 80 chars {{{
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
 "}}}
 
 "autocmd {{{
@@ -152,13 +174,6 @@ if has('autocmd')
   augroup END
   "}}}
 
-  augroup filetype_wlpp "{{{
-    autocmd!
-    "wlpp is cpp subset
-    autocmd BufEnter *.wlpp set filetype=cpp
-  augroup END
-  "}}}
-
   augroup filetype_md "{{{
     autocmd!
     "don't strip whitespace in markdown files
@@ -177,21 +192,6 @@ if has('autocmd')
     autocmd FileType qf wincmd J
   augroup END
   "}}}
-endif
-"}}}
-
-"white space characters {{{
-if &listchars ==# 'eol:$'
-  set listchars=tab:▸\ ,eol:¬
-endif
-"}}}
-
-"extra space while scrolling {{{
-if !&scrolloff
-  set scrolloff=1
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
 endif
 "}}}
 
@@ -250,6 +250,8 @@ nnoremap <C-p> :FZFGFiles<CR>
 nnoremap <space> :FZFBuffers<CR>
 nnoremap <silent> <leader>g :FZFGFiles?<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
+nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
 "custom mappings {{{
@@ -292,7 +294,6 @@ nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
-nnoremap <C-f> :Gg <cword><CR>
 nnoremap <Backspace> <C-^>
 "}}}
 
@@ -304,33 +305,25 @@ function! StripTrailingWhitespace()
   %s/\s\+$//e
 endfunction
 
-function! QuickfixToggle() "{{{
+function! QuickfixToggle()
     let nr = winnr("$")
     cwindow
     let nr2 = winnr("$")
     if nr == nr2
         cclose
     endif
-endfunction "}}}
-"}}}
+endfunction
 
-"avoid webpack livereload issues {{{
-set backupcopy=yes
-"}}}
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
 
-"persistent undo {{{
-if exists('+undodir')
-    set undodir=$HOME/.vim/undodir
-    set undofile
-endif
-"}}}
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
 
-"put swap files in central location {{{
-set directory=$HOME/.vim/swapdir
-"}}}
-
-"highlight at 80 chars {{{
-if exists('+colorcolumn')
-  set colorcolumn=80
-endif
+    return l:counts.total == 0 ? '' : printf(
+    \   'Errors: %d, Warnings: %d',
+    \   all_errors,
+    \   all_non_errors
+    \)
+endfunction
 "}}}
