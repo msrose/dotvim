@@ -142,6 +142,10 @@ if exists('+colorcolumn')
 endif
 "}}}
 
+"delete comment character when joining {{
+set formatoptions+=j
+"}}
+
 "autocmd {{{
 if has('autocmd')
   augroup sign_column "{{{
