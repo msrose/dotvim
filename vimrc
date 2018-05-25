@@ -225,6 +225,10 @@ let g:fzf_command_prefix = 'FZF'
 let g:gutentags_file_list_command = 'git ls-files'
 "}}}
 
+"Gutentags tag file directory {{{
+let g:gutentags_cache_dir = $HOME . "/.vim/tagsdir"
+"}}}
+
 "git grep with fugitive and open quickfix window {{{
 command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
 "}}}
@@ -238,11 +242,13 @@ command! -bang -nargs=* FZFGg
 
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>t\| :Tab/\|<CR>
-nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
+nnoremap <C-n> :NERDTreeFind<CR>
+nnoremap <silent> <leader>t :Tagbar<CR>
+nnoremap <C-b> :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>f :FZFGg<CR>
 nnoremap <C-p> :FZFGFiles<CR>
 nnoremap <space> :FZFBuffers<CR>
+nnoremap <silent> <leader>g :FZFGFiles?<CR>
 "}}}
 
 "custom mappings {{{
