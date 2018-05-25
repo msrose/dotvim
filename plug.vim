@@ -30,4 +30,5 @@ Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
+Plug 'styled-components/vim-styled-components'
 call plug#end()
