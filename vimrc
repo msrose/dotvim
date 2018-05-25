@@ -249,6 +249,7 @@ nnoremap <silent> <leader>f :FZFGg<CR>
 nnoremap <C-p> :FZFGFiles<CR>
 nnoremap <space> :FZFBuffers<CR>
 nnoremap <silent> <leader>g :FZFGFiles?<CR>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
 "}}}
 
 "custom mappings {{{
