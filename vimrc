@@ -27,10 +27,10 @@ highlight WarningMsg ctermbg=red guibg=red
 "gVim settings {{{
 if has("gui_running")
   highlight Comment gui=NONE
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions-=r
-  set guioptions-=L
+  set guioptions-=T "no toolbar
+  set guioptions-=m "no menu
+  set guioptions-=r "no right scroll
+  set guioptions-=L "no left scroll
 
   "OS specific
   if has("win32") || has("win64")
