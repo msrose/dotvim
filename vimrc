@@ -298,6 +298,10 @@ nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
+nnoremap [t :tprev<CR>
+nnoremap ]t :tnext<CR>
+nnoremap [T :tfirst<CR>
+nnoremap ]T :tlast<CR>
 nnoremap <Backspace> <C-^>
 "}}}
 
