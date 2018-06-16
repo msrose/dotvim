@@ -1,8 +1,7 @@
 "basic settings {{{
 set nocompatible
 
-"source the plugins file
-source $HOME/.vim/plug.vim
+source $HOME/.vim/plug.vim "source the plugins file
 
 if has('autocmd')
   filetype plugin indent on
@@ -27,13 +26,13 @@ highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 "}}}
 
-"for running gVim {{{
+"gVim settings {{{
 if has("gui_running")
   highlight Comment gui=NONE
   set guioptions-=T
   set guioptions-=m
 
-  "OS specific {{{
+  "OS specific
   if has("win32") || has("win64")
     set encoding=utf8
     cd ~
@@ -48,7 +47,6 @@ if has("gui_running")
       silent! set guifont=Monaco:h16
     endif
   endif
-  "}}}
 endif
 "}}}
 
@@ -79,73 +77,63 @@ set statusline+=%l/         "current line
 set statusline+=%-10L       "total line
 "}}}
 
-"command entry {{{
+"miscellaneous options {{{
+
+"command entry
 set showcmd
 set cmdheight=2
 set wildmenu
-"}}}
 
-"searching {{{
+"searching
 set ignorecase
 set smartcase
 set incsearch
-"set highlighting search terms...
-set hlsearch
-"...but don't do it every time we source the vimrc
-nohlsearch
-"}}}
+set hlsearch "set highlighting search terms...
+nohlsearch   "but don't do it every time we source the vimrc
 
-"bracket matching {{{
+"bracket matching
 set showmatch
-"}}}
 
-"automatically update files on change {{{
+"automatically update files on change
 set autoread
-"}}}
 
-"allow hidden buffers {{{
+"allow hidden buffers
 set hidden
-"}}}
 
-"white space characters {{{
+"white space characters
 if &listchars ==# 'eol:$'
   set listchars=tab:▸\ ,eol:¬
 endif
-"}}}
 
-"extra space while scrolling {{{
+"extra space while scrolling
 if !&scrolloff
   set scrolloff=3
 endif
 if !&sidescrolloff
   set sidescrolloff=5
 endif
-"}}}
 
-"avoid webpack livereload issues {{{
+"avoid webpack livereload issues
 set backupcopy=yes
-"}}}
 
-"persistent undo {{{
-if exists('+undodir')
-    set undodir=$HOME/.vim/undodir
-    set undofile
+"persistent undo
+if has('persistent_undo')
+  set undodir=$HOME/.vim/undodir
+  set undofile
 endif
-"}}}
 
-"put swap files in central location {{{
+"put swap files in central location
 set directory=$HOME/.vim/swapdir
-"}}}
 
-"highlight at 80 chars {{{
+"highlight at 80 chars
 if exists('+colorcolumn')
   set colorcolumn=80
 endif
-"}}}
 
-"delete comment character when joining {{
+"delete comment character when joining
 set formatoptions+=j
-"}}
+
+"}}}
 
 "autocmd {{{
 if has('autocmd')
@@ -200,54 +188,49 @@ if has('autocmd')
 endif
 "}}}
 
-"change git gutter defaults {{{
+"plugin settings {{{
+
+"change git gutter defaults
 let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
-"}}}
 
-"JSX {{{
+"don't require .jsx extension for JSX
 let g:jsx_ext_required = 0
-"}}}
 
-"Disable default folding in markdown {{{
+"Disable default folding in markdown
 let g:vim_markdown_folding_disabled = 1
-"}}}
 
-"Enable flow syntax highlighting {{{
+"enable flow and JSDoc syntax highlighting
 let g:javascript_plugin_flow = 1
-"}}}
-
-"Enable JSDoc syntax highlighting {{{
 let g:javascript_plugin_jsdoc = 1
-"}}}
 
-"FZF prefix {{{
+"FZF command prefix
 let g:fzf_command_prefix = 'FZF'
-"}}}
 
-"Gutentags file list {{{
+"files to generate tags for
 let g:gutentags_file_list_command = 'git ls-files'
-"}}}
 
-"Gutentags tag file directory {{{
+"directory in which to store tag files
 let g:gutentags_cache_dir = $HOME . "/.vim/tagsdir"
+
 "}}}
 
-"git grep with fugitive and open quickfix window {{{
+"custom commands {{{
+
+"git grep with fugitive and open quickfix window
 command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
-"}}}
 
-"git grep with fzf for fuzzy searching through contents {{{
+"git grep with fzf for fuzzy searching through contents
 command! -bang -nargs=* FZFGg
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
-"}}}
 
-"writing mode {{{
+"writing mode
 command! WriteOn Goyo | Limelight
 command! WriteOff Goyo! | Limelight! | source $MYVIMRC
+
 "}}}
 
 "plugin mappings {{{
@@ -265,20 +248,20 @@ nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
 "custom mappings {{{
+inoremap jj <Esc>
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
 nnoremap K i<CR><Esc>k$
 nnoremap Y y$
+nnoremap <Backspace> <C-^>
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
-nnoremap <silent> <leader>d :redraw!<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
@@ -304,11 +287,10 @@ nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
-nnoremap [t :tprev<CR>
+nnoremap [t :tprevious<CR>
 nnoremap ]t :tnext<CR>
 nnoremap [T :tfirst<CR>
 nnoremap ]T :tlast<CR>
-nnoremap <Backspace> <C-^>
 "}}}
 
 "custom functions {{{
