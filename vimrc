@@ -21,6 +21,7 @@ endif
 "colorscheme {{{
 set t_Co=256
 colorscheme made_of_code
+let g:colors_name = 'made_of_code'
 highlight WarningMsg ctermbg=red guibg=red
 highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
@@ -242,6 +243,11 @@ command! -bang -nargs=* FZFGg
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+"}}}
+
+"writing mode {{{
+command! WriteOn Goyo | Limelight
+command! WriteOff Goyo! | Limelight! | source $MYVIMRC
 "}}}
 
 "plugin mappings {{{
