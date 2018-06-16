@@ -182,6 +182,7 @@ endif
 "plugin settings {{{
 
 "change git gutter defaults
+let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
 if exists('&signcolumn')
