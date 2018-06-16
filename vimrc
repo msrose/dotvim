@@ -137,15 +137,6 @@ set formatoptions+=j
 
 "autocmd {{{
 if has('autocmd')
-  augroup sign_column "{{{
-    autocmd!
-    "set default sign column for use with git gutter
-    autocmd BufEnter * sign define dummy
-    autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-    highlight SignColumn ctermbg=NONE guibg=NONE
-  augroup END
-  "}}}
-
   augroup white_space "{{{
     autocmd!
     "remove extra whitespace on save
@@ -191,9 +182,13 @@ endif
 "plugin settings {{{
 
 "change git gutter defaults
-let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
+if exists('&signcolumn')
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 
 "don't require .jsx extension for JSX
 let g:jsx_ext_required = 0
