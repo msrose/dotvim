@@ -22,8 +22,6 @@ set t_Co=256
 colorscheme made_of_code
 let g:colors_name = 'made_of_code'
 highlight WarningMsg ctermbg=red guibg=red
-highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
-highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 "}}}
 
 "gVim settings {{{
@@ -31,6 +29,8 @@ if has("gui_running")
   highlight Comment gui=NONE
   set guioptions-=T
   set guioptions-=m
+  set guioptions-=r
+  set guioptions-=L
 
   "OS specific
   if has("win32") || has("win64")
@@ -44,11 +44,12 @@ if has("gui_running")
     if os ==# "Linux"
       silent! set guifont=Ubuntu\ Mono\ 14
     elseif os == "Darwin"
-      silent! set guifont=Monaco:h16
+      silent! set guifont=Monaco:h14
     endif
   endif
 endif
 "}}}
+"
 
 "indentation and tabs {{{
 set autoindent
@@ -63,6 +64,8 @@ set linebreak
 "}}}
 
 "statusline {{{
+highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
+highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 set laststatus=2
 set statusline=%1*%{fugitive#statusline()}%*
 set statusline+=%2*\ %f\ %* "filename
