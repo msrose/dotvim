@@ -19,13 +19,14 @@ endif
 
 "colorscheme {{{
 set t_Co=256
-colorscheme made_of_code
-let g:colors_name = 'made_of_code'
+let s:colors_name = 'made_of_code'
+execute 'colorscheme ' . s:colors_name
+let g:colors_name = s:colors_name
 highlight WarningMsg ctermbg=red guibg=red
 "}}}
 
 "gVim settings {{{
-if has("gui_running")
+if has('gui_running')
   highlight Comment gui=NONE
   set guioptions-=T "no toolbar
   set guioptions-=m "no menu
@@ -33,17 +34,17 @@ if has("gui_running")
   set guioptions-=L "no left scroll
 
   "OS specific
-  if has("win32") || has("win64")
+  if has('win32') || has('win64')
     set encoding=utf8
     cd ~
     autocmd GUIEnter * simalt ~x
     set directory+=$HOME
     set guifont=Lucida\ Console:h12
-  elseif has("unix")
-    let os = substitute(system("uname"), "\n", "", "g")
-    if os ==# "Linux"
+  elseif has('unix')
+    let os = substitute(system('uname'), "\n", '', 'g')
+    if os ==# 'Linux'
       silent! set guifont=Ubuntu\ Mono\ 14
-    elseif os == "Darwin"
+    elseif os ==# 'Darwin'
       silent! set guifont=Monaco:h14
     endif
   endif
@@ -211,14 +212,14 @@ let g:fzf_command_prefix = 'FZF'
 let g:gutentags_file_list_command = 'git ls-files'
 
 "directory in which to store tag files
-let g:gutentags_cache_dir = $HOME . "/.vim/tagsdir"
+let g:gutentags_cache_dir = $HOME . '/.vim/tagsdir'
 
 "}}}
 
 "custom commands {{{
 
 "git grep with fugitive and open quickfix window
-command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
+command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cwindow | redraw!
 
 "git grep with fzf for fuzzy searching through contents
 command! -bang -nargs=* FZFGg
@@ -301,24 +302,21 @@ function! StripTrailingWhitespace()
 endfunction
 
 function! QuickfixToggle()
-    let nr = winnr("$")
+    let nr = winnr('$')
     cwindow
-    let nr2 = winnr("$")
+    let nr2 = winnr('$')
     if nr == nr2
         cclose
     endif
 endfunction
 
 function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+    let counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+    let errors = counts.error + counts.style_error
+    let warnings = counts.total - errors
 
-    return l:counts.total == 0 ? '' : printf(
-    \   'Errors: %d, Warnings: %d',
-    \   all_errors,
-    \   all_non_errors
-    \)
+    let status_string = 'Errors: %d, Warnings: %d'
+    return counts.total == 0 ? '' : printf(status_string, errors, warnings)
 endfunction
 "}}}
