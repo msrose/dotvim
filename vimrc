@@ -214,6 +214,13 @@ let g:gutentags_file_list_command = 'git ls-files'
 "directory in which to store tag files
 let g:gutentags_cache_dir = $HOME . '/.vim/tagsdir'
 
+"don't let NERDTree hijack netrw
+let g:NERDTreeHijackNetrw = 0
+
+"customize netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
 "}}}
 
 "custom commands {{{
@@ -236,14 +243,15 @@ command! WriteOff Goyo! | Limelight! | source $MYVIMRC
 "plugin mappings {{{
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTreeFind<CR>
+nnoremap <Space> :call ToggleNetrw()<CR>
 nnoremap <silent> <leader>t :Tagbar<CR>
-nnoremap <C-b> :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>f :FZFGg<CR>
+nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <C-p> :FZFGFiles<CR>
-nnoremap <space> :FZFBuffers<CR>
+nnoremap <C-b> :FZFBuffers<CR>
 nnoremap <silent> <leader>g :FZFGFiles?<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
+nnoremap <silent> <leader>- :nohlsearch<CR>:GitGutter<CR><C-l>
 nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
@@ -318,5 +326,13 @@ function! LinterStatus() abort
 
     let status_string = 'Errors: %d, Warnings: %d'
     return counts.total == 0 ? '' : printf(status_string, errors, warnings)
+endfunction
+
+function! ToggleNetrw()
+  if exists(':Rexplore')
+    Rexplore
+  else
+    Explore
+  endif
 endfunction
 "}}}
