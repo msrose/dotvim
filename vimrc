@@ -137,6 +137,9 @@ endif
 "delete comment character when joining
 set formatoptions+=j
 
+"for speed, don't search included files when auto-completing
+set complete-=i
+
 "}}}
 
 "autocmd {{{
@@ -214,13 +217,6 @@ let g:gutentags_file_list_command = 'git ls-files'
 "directory in which to store tag files
 let g:gutentags_cache_dir = $HOME . '/.vim/tagsdir'
 
-"don't let NERDTree hijack netrw
-let g:NERDTreeHijackNetrw = 0
-
-"customize netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-
 "}}}
 
 "custom commands {{{
@@ -241,17 +237,15 @@ command! WriteOff Goyo! | Limelight! | source $MYVIMRC
 "}}}
 
 "plugin mappings {{{
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeFind<CR>
-nnoremap <Space> :call ToggleNetrw()<CR>
-nnoremap <silent> <leader>t :Tagbar<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <Space> :NERDTreeFind<CR>
+nnoremap <silent> <C-p> :FZFGFiles<CR>
+nnoremap <silent> <C-b> :FZFBuffers<CR>
 nnoremap <silent> <leader>f :FZFGg<CR>
-nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
-nnoremap <C-p> :FZFGFiles<CR>
-nnoremap <C-b> :FZFBuffers<CR>
 nnoremap <silent> <leader>g :FZFGFiles?<CR>
+nnoremap <silent> <leader>t :Tagbar<CR>
+nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>- :nohlsearch<CR>:GitGutter<CR><C-l>
 nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
@@ -274,6 +268,7 @@ nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
+nnoremap <silent> <leader>- :nohlsearch<CR>:GitGutter<CR><C-l>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
@@ -326,13 +321,5 @@ function! LinterStatus() abort
 
     let status_string = 'Errors: %d, Warnings: %d'
     return counts.total == 0 ? '' : printf(status_string, errors, warnings)
-endfunction
-
-function! ToggleNetrw()
-  if exists(':Rexplore')
-    Rexplore
-  else
-    Explore
-  endif
 endfunction
 "}}}
