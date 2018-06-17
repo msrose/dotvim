@@ -12,9 +12,6 @@ endif
 set number
 set history=1000
 set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
 "}}}
 
 "colorscheme {{{
@@ -25,9 +22,13 @@ let g:colors_name = s:colors_name
 highlight WarningMsg ctermbg=red guibg=red
 "}}}
 
-"gVim settings {{{
+"GUI settings {{{
 if has('gui_running')
+  autocmd GUIEnter * set visualbell t_vb=
+
+  "no italic comments
   highlight Comment gui=NONE
+
   set guioptions-=T "no toolbar
   set guioptions-=m "no menu
   set guioptions-=r "no right scroll
@@ -50,7 +51,6 @@ if has('gui_running')
   endif
 endif
 "}}}
-"
 
 "indentation and tabs {{{
 set autoindent
@@ -140,6 +140,9 @@ set formatoptions+=j
 "for speed, don't search included files when auto-completing
 set complete-=i
 
+"no redraw during macro execution
+set lazyredraw
+
 "}}}
 
 "autocmd {{{
@@ -192,7 +195,7 @@ endif
 let g:gitgutter_sign_modified = '+'
 let g:gitgutter_sign_modified_removed = '+_'
 highlight GitGutterChange ctermfg=green guifg=green
-if exists('&signcolumn')
+if has('signs')
   set signcolumn=yes
 else
   let g:gitgutter_sign_column_always = 1
