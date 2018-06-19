@@ -308,21 +308,19 @@ function! StripTrailingWhitespace()
 endfunction
 
 function! QuickfixToggle()
-    let nr = winnr('$')
-    cwindow
-    let nr2 = winnr('$')
-    if nr == nr2
-        cclose
-    endif
+  let nr = winnr('$')
+  cwindow
+  let nr2 = winnr('$')
+  if nr == nr2
+    cclose
+  endif
 endfunction
 
 function! LinterStatus() abort
-    let counts = ale#statusline#Count(bufnr(''))
-
-    let errors = counts.error + counts.style_error
-    let warnings = counts.total - errors
-
-    let status_string = 'Errors: %d, Warnings: %d'
-    return counts.total == 0 ? '' : printf(status_string, errors, warnings)
+  let counts = ale#statusline#Count(bufnr(''))
+  let errors = counts.error + counts.style_error
+  let warnings = counts.total - errors
+  let status_string = 'Errors: %d, Warnings: %d'
+  return counts.total == 0 ? '' : printf(status_string, errors, warnings)
 endfunction
 "}}}
