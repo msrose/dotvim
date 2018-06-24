@@ -285,8 +285,8 @@ nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
 nnoremap [B :bfirst<CR>
 nnoremap ]B :blast<CR>
-nnoremap [l :lprevious<CR>
-nnoremap ]l :lnext<CR>
+nnoremap <silent> [l :call LocJump('previous')<CR>
+nnoremap <silent> ]l :call LocJump('next')<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
 nnoremap [q :cprevious<CR>
@@ -322,5 +322,36 @@ function! LinterStatus() abort
   let warnings = counts.total - errors
   let status_string = 'Errors: %d, Warnings: %d'
   return counts.total == 0 ? '' : printf(status_string, errors, warnings)
+endfunction
+
+function! LocJump(type)
+  let loclist = getloclist(winnr())
+  let current_line_number = line('.')
+  if empty(loclist)
+    echo 'No errors!'
+    return
+  endif
+  let error_after_index = 0
+  let error_before = loclist[-1]
+  let error_after = loclist[0]
+  for error in loclist
+    "TODO: account for multiple errors on a single line
+    if error.lnum > current_line_number
+      let error_after = error
+      let error_before = loclist[error_after_index - 1]
+      break
+    endif
+    let error_after_index += 1
+  endfor
+  if error_before.lnum == current_line_number
+    let error_before = loclist[error_after_index - 2]
+  endif
+  let jump_dict = { 'previous': error_before, 'next': error_after }
+  if !has_key(jump_dict, a:type)
+    throw 'LocJump: Unknown jump type "' . a:type . '". Expected "previous" or "next".'
+  endif
+  let error_to_jump_to = jump_dict[a:type]
+  "TODO: use ll/lfirst to jump to the error
+  execute 'normal ' . error_to_jump_to.lnum . 'G' . error_to_jump_to.col . '|'
 endfunction
 "}}}
