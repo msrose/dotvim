@@ -332,26 +332,28 @@ function! LocJump(type)
     return
   endif
   let error_after_index = 0
-  let error_before = loclist[-1]
-  let error_after = loclist[0]
-  for error in loclist
+  let error_before_index = -1
+  while error_after_index < len(loclist)
+    let error = loclist[error_after_index]
     "TODO: account for multiple errors on a single line
     if error.lnum > current_line_number
-      let error_after = error
-      let error_before = loclist[error_after_index - 1]
+      let error_before_index = error_after_index - 1
       break
     endif
     let error_after_index += 1
-  endfor
-  if error_before.lnum == current_line_number
-    let error_before = loclist[error_after_index - 2]
+  endwhile
+  let error_after_index = error_after_index % len(loclist)
+  if loclist[error_before_index].lnum == current_line_number
+    let error_before_index = error_after_index - 2
   endif
-  let jump_dict = { 'previous': error_before, 'next': error_after }
+  let jump_dict = { 'previous': error_before_index, 'next': error_after_index }
   if !has_key(jump_dict, a:type)
-    throw 'LocJump: Unknown jump type "' . a:type . '". Expected "previous" or "next".'
+    throw 'LocJump: Unknown jump type "' . a:type . '". Expected one of [' . join(keys(jump_dict), ',') . '].'
   endif
-  let error_to_jump_to = jump_dict[a:type]
-  "TODO: use ll/lfirst to jump to the error
-  execute 'normal ' . error_to_jump_to.lnum . 'G' . error_to_jump_to.col . '|'
+  let error_index_to_jump_to = jump_dict[a:type]
+  if error_index_to_jump_to < 0
+    let error_index_to_jump_to += len(loclist)
+  endif
+  execute 'll ' . (error_index_to_jump_to + 1)
 endfunction
 "}}}
