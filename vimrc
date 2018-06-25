@@ -277,26 +277,17 @@ nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
-nnoremap [a :previous<CR>
-nnoremap ]a :next<CR>
-nnoremap [A :first<CR>
-nnoremap ]A :last<CR>
-nnoremap [b :bprevious<CR>
-nnoremap ]b :bnext<CR>
-nnoremap [B :bfirst<CR>
-nnoremap ]B :blast<CR>
 nnoremap <silent> [l :call LocJump('previous')<CR>
 nnoremap <silent> ]l :call LocJump('next')<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
-nnoremap [q :cprevious<CR>
-nnoremap ]q :cnext<CR>
-nnoremap [Q :cfirst<CR>
-nnoremap ]Q :clast<CR>
-nnoremap [t :tprevious<CR>
-nnoremap ]t :tnext<CR>
-nnoremap [T :tfirst<CR>
-nnoremap ]T :tlast<CR>
+let s:cycle_shortcut_mapping = { 'a': '', 'b': 'b', 'q': 'c', 't': 't' }
+for [shortcut, command_prefix] in items(s:cycle_shortcut_mapping)
+  execute 'nnoremap [' . toupper(shortcut) . ' :' . command_prefix . 'first<CR>'
+  execute 'nnoremap [' . shortcut . ' :' . command_prefix . 'previous<CR>'
+  execute 'nnoremap ]' . toupper(shortcut) . ' :' . command_prefix . 'last<CR>'
+  execute 'nnoremap ]' . shortcut . ' :' . command_prefix . 'next<CR>'
+endfor
 "}}}
 
 "custom functions {{{
