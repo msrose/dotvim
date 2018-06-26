@@ -34,4 +34,5 @@ Plug 'mbbill/undotree'
 Plug 'styled-components/vim-styled-components'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'msrose/vim-perpetuloc'
 call plug#end()
