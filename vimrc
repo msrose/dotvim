@@ -241,7 +241,7 @@ command! WriteOff Goyo! | Limelight! | source $MYVIMRC
 
 "plugin mappings {{{
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-nnoremap <silent> <Space> :NERDTreeFind<CR>
+nnoremap <silent> <leader>n :NERDTreeFind<CR>
 nnoremap <silent> <C-p> :FZFGFiles<CR>
 nnoremap <silent> <C-b> :FZFBuffers<CR>
 nnoremap <silent> <leader>f :FZFGg<CR>
