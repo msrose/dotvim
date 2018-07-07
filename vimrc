@@ -24,7 +24,10 @@ highlight WarningMsg ctermbg=red guibg=red
 
 "GUI settings {{{
 if has('gui_running')
-  autocmd GUIEnter * set visualbell t_vb=
+  augroup gui
+    autocmd!
+    autocmd GUIEnter * set visualbell t_vb=
+  augroup END
 
   "no italic comments
   highlight Comment gui=NONE
@@ -38,7 +41,10 @@ if has('gui_running')
   if has('win32') || has('win64')
     set encoding=utf8
     cd ~
-    autocmd GUIEnter * simalt ~x
+    augroup windows
+      autocmd!
+      autocmd GUIEnter * simalt ~x
+    augroup END
     set directory+=$HOME
     set guifont=Lucida\ Console:h12
   elseif has('unix')
