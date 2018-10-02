@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-endwise'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-commentary'
@@ -35,4 +34,5 @@ Plug 'styled-components/vim-styled-components'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'msrose/vim-perpetuloc'
+Plug 'mhinz/vim-signify'
 call plug#end()

@@ -197,15 +197,13 @@ endif
 
 "plugin settings {{{
 
-"change git gutter defaults
-let g:gitgutter_sign_modified = '+'
-let g:gitgutter_sign_modified_removed = '+_'
-highlight GitGutterChange ctermfg=green guifg=green
+"configure signcolumn for vim-signify
 if has('signs')
   set signcolumn=yes
-else
-  let g:gitgutter_sign_column_always = 1
+  highlight SignColumn ctermbg=17 guibg=#212231
 endif
+let g:signify_realtime = 1
+let g:signify_vcs_list = ['git']
 
 "don't require .jsx extension for JSX
 let g:jsx_ext_required = 0
@@ -255,6 +253,7 @@ nnoremap <silent> <leader>g :FZFGFiles?<CR>
 nnoremap <silent> <leader>t :Tagbar<CR>
 nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>p :ALEFix eslint<CR>
 nnoremap <C-f> :Gg <cword><CR>
 "}}}
 
