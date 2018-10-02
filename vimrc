@@ -149,6 +149,12 @@ set complete-=i
 "no redraw during macro execution
 set lazyredraw
 
+"signcolumn
+if has('signs')
+  set signcolumn=yes
+  highlight SignColumn ctermbg=17 guibg=#212231
+endif
+
 "}}}
 
 "autocmd {{{
@@ -197,13 +203,16 @@ endif
 
 "plugin settings {{{
 
-"configure signcolumn for vim-signify
-if has('signs')
-  set signcolumn=yes
-  highlight SignColumn ctermbg=17 guibg=#212231
-endif
+"configure vim-signify
 let g:signify_realtime = 1
 let g:signify_vcs_list = ['git']
+let g:signify_cursorhold_normal = 0
+let g:signify_cursorhold_insert = 0
+let g:signify_sign_change = '~'
+let g:signify_sign_changedelete = g:signify_sign_change
+highlight SignifySignAdd cterm=bold ctermbg=17 ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=17 ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=17 ctermfg=227
 
 "don't require .jsx extension for JSX
 let g:jsx_ext_required = 0
@@ -276,7 +285,7 @@ nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
-nnoremap <silent> <leader>- :nohlsearch<CR>:GitGutter<CR><C-l>
+nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
