@@ -35,4 +35,5 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'msrose/vim-perpetuloc'
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-rhubarb'
 call plug#end()
