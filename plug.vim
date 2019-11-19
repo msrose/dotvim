@@ -36,4 +36,5 @@ Plug 'junegunn/limelight.vim'
 Plug 'msrose/vim-perpetuloc'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()

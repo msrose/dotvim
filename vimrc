@@ -184,9 +184,6 @@ if has('autocmd')
     autocmd!
     "don't strip whitespace in markdown files
     autocmd FileType markdown let b:no_strip_whitespace=1
-    "TODO: find out how to make this an iabbrev instead
-    "(seems like auto-pairs breaks abbrevs)
-    autocmd FileType markdown :inoremap <buffer> --- &mdash;
   augroup END
   "}}}
 
@@ -233,6 +230,11 @@ let g:gutentags_file_list_command = 'git ls-files'
 "directory in which to store tag files
 let g:gutentags_cache_dir = $HOME . '/.vim/tagsdir'
 
+"localvimrc settings
+let g:localvimrc_persistent = 1
+
+"ale pylint
+let g:ale_python_pylint_change_directory = 0
 "}}}
 
 "custom commands {{{
