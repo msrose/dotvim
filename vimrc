@@ -238,6 +238,12 @@ let g:ale_python_pylint_change_directory = 0
 
 "python3 syntax highlighting
 let g:python_highlight_all = 1
+
+"Make ale use pylint correctly
+let g:ale_python_pylint_change_directory = 0
+
+"Make ale show linter name
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 "}}}
 
 "custom commands {{{
