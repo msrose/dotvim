@@ -235,6 +235,9 @@ let g:localvimrc_persistent = 1
 
 "ale pylint
 let g:ale_python_pylint_change_directory = 0
+
+"python3 syntax highlighting
+let g:python_highlight_all = 1
 "}}}
 
 "custom commands {{{

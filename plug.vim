@@ -36,4 +36,5 @@ Plug 'msrose/vim-perpetuloc'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'vim-python/python-syntax'
 call plug#end()
