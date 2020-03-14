@@ -1,7 +1,8 @@
 "basic settings {{{
 set nocompatible
 
-source $HOME/.vim/plug.vim "source the plugins file
+source $HOME/.vim/plug.vim "load plugin list
+source $HOME/.vim/helpers.vim
 
 if has('autocmd')
   filetype plugin indent on
@@ -16,10 +17,15 @@ set noerrorbells visualbell t_vb=
 
 "colorscheme {{{
 set t_Co=256
-let s:colors_name = 'made_of_code'
+let s:colors_name = 'made_of_code' "'tender' is also pretty good
 execute 'colorscheme ' . s:colors_name
 let g:colors_name = s:colors_name
+
+"overrides for colorscheme
 highlight WarningMsg ctermbg=red guibg=red
+highlight Normal ctermbg=black guibg=black
+highlight Visual ctermbg=235
+highlight LineNr ctermbg=17
 "}}}
 
 "GUI settings {{{
@@ -71,6 +77,7 @@ set linebreak
 "}}}
 
 "statusline {{{
+highlight StatusLine ctermfg=white guifg=white
 highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 set laststatus=2
@@ -152,7 +159,8 @@ set lazyredraw
 "signcolumn
 if has('signs')
   set signcolumn=yes
-  highlight SignColumn ctermbg=17 guibg=#212231
+  "make signcolumn the same background color as line numbers
+  call MatchHighlight('SignColumn', 'LineNr', ['ctermbg', 'guibg'])
 endif
 
 "}}}
@@ -203,12 +211,13 @@ endif
 "configure vim-signify
 set updatetime=100
 let g:signify_sign_change = '~'
-highlight SignifySignAdd cterm=bold ctermbg=17 ctermfg=119
-highlight SignifySignDelete cterm=bold ctermbg=17 ctermfg=167
-highlight SignifySignChange cterm=bold ctermbg=17 ctermfg=227
-
-"don't require .jsx extension for JSX
-let g:jsx_ext_required = 0
+highlight SignifySignAdd cterm=bold ctermfg=119
+highlight SignifySignDelete cterm=bold ctermfg=167
+highlight SignifySignChange cterm=bold ctermfg=227
+"give signify signs the same background as the sign column
+for group in ['Add', 'Delete', 'Change']
+  call MatchHighlight('SignifySign' . group, 'SignColumn', ['ctermbg', 'guibg'])
+endfor
 
 "Disable default folding in markdown
 let g:vim_markdown_folding_disabled = 1
@@ -290,6 +299,7 @@ nnoremap <silent> <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <silent> <leader>ep :tabnew $HOME/.vim/plug.vim<CR>
 nnoremap <silent> <leader>r :set relativenumber!<CR>
 nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
+nnoremap <silent> <leader>y :call SynGroup()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
@@ -306,30 +316,4 @@ for [shortcut, command_prefix] in items(s:cycle_shortcut_mapping)
   execute 'nnoremap ]' . toupper(shortcut) . ' :' . command_prefix . 'last<CR>'
   execute 'nnoremap ]' . shortcut . ' :' . command_prefix . 'next<CR>'
 endfor
-"}}}
-
-"custom functions {{{
-function! StripTrailingWhitespace()
-  if exists('b:no_strip_whitespace')
-    return
-  endif
-  %s/\s\+$//e
-endfunction
-
-function! QuickfixToggle()
-  let nr = winnr('$')
-  cwindow
-  let nr2 = winnr('$')
-  if nr == nr2
-    cclose
-  endif
-endfunction
-
-function! LinterStatus() abort
-  let counts = ale#statusline#Count(bufnr(''))
-  let errors = counts.error + counts.style_error
-  let warnings = counts.total - errors
-  let status_string = 'Errors: %d, Warnings: %d'
-  return counts.total == 0 ? '' : printf(status_string, errors, warnings)
-endfunction
 "}}}
