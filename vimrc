@@ -293,6 +293,7 @@ nnoremap <silent> <leader>c :call QuickfixToggle()<CR>
 nnoremap <leader>sp :set spell!<CR>\|:echo "Spell: " . &spell<CR>
 nnoremap <leader>w :set wrap!<CR>\|:echo "Wrap: " . &wrap<CR>
 nnoremap <silent> <leader>- :nohlsearch<CR><C-l>
+nnoremap <silent> <leader>h :help <C-r><C-w><CR>
 set pastetoggle=<F5>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
