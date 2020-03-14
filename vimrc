@@ -201,12 +201,8 @@ endif
 "plugin settings {{{
 
 "configure vim-signify
-let g:signify_realtime = 1
-let g:signify_vcs_list = ['git']
-let g:signify_cursorhold_normal = 0
-let g:signify_cursorhold_insert = 0
+set updatetime=100
 let g:signify_sign_change = '~'
-let g:signify_sign_changedelete = g:signify_sign_change
 highlight SignifySignAdd cterm=bold ctermbg=17 ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=17 ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=17 ctermfg=227
