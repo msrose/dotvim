@@ -219,13 +219,6 @@ for group in ['Add', 'Delete', 'Change']
   call MatchHighlight('SignifySign' . group, 'SignColumn', ['ctermbg', 'guibg'])
 endfor
 
-"Disable default folding in markdown
-let g:vim_markdown_folding_disabled = 1
-
-"enable flow and JSDoc syntax highlighting
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-
 "FZF command prefix
 let g:fzf_command_prefix = 'FZF'
 
@@ -240,9 +233,6 @@ let g:localvimrc_persistent = 1
 
 "ale pylint
 let g:ale_python_pylint_change_directory = 0
-
-"python3 syntax highlighting
-let g:python_highlight_all = 1
 
 "Make ale use pylint correctly
 let g:ale_python_pylint_change_directory = 0
