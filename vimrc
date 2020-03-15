@@ -17,15 +17,26 @@ set noerrorbells visualbell t_vb=
 
 "colorscheme {{{
 set t_Co=256
-let s:colors_name = 'made_of_code' "'tender' is also pretty good
+let s:colors_name = 'made_of_code' "Others: 'tender', '256-grayvim'
 execute 'colorscheme ' . s:colors_name
 let g:colors_name = s:colors_name
 
-"overrides for colorscheme
+"overrides for colorschemes
+if s:colors_name ==# '256-grayvim'
+  highlight PreProc term=bold cterm=bold ctermfg=160 guifg=#f8f8f8
+endif
+if s:colors_name ==# 'made_of_code'
+  "Hacks to get typescript to look okay-ish, but has some weird side-effects
+  highlight Special ctermfg=203 guifg=#ff3854
+  highlight Keyword ctermfg=81 guifg=#6fd3ff
+  call MatchHighlight('Label', 'Normal', ['ctermfg', 'guifg'])
+endif
 highlight WarningMsg ctermbg=red guibg=red
 highlight Normal ctermbg=black guibg=black
-highlight Visual ctermbg=235
-highlight LineNr ctermbg=17
+"use Normal bg default from tender as Visual bg
+highlight Visual ctermbg=235 guibg=#282828
+"use LineNr bg default from made_of_code
+highlight LineNr ctermbg=17 guibg=#212231
 "}}}
 
 "GUI settings {{{
