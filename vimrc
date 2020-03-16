@@ -188,7 +188,14 @@ if has('autocmd')
   augroup filetype_gitcommit "{{{
     autocmd!
     "special settings for git commits
-    autocmd FileType gitcommit set spell
+    autocmd FileType gitcommit set spell completefunc=emoji#complete
+  augroup END
+  "}}}
+
+  augroup filetype_pullrequest "{{{
+    autocmd!
+    "special settings for pull requests (hub CLI)
+    autocmd FileType pullrequest set spell completefunc=emoji#complete
   augroup END
   "}}}
 
@@ -203,6 +210,7 @@ if has('autocmd')
     autocmd!
     "don't strip whitespace in markdown files
     autocmd FileType markdown let b:no_strip_whitespace=1
+    autocmd FileType markdown set completefunc=emoji#complete
   augroup END
   "}}}
 
