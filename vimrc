@@ -32,9 +32,8 @@ if s:colors_name ==# 'made_of_code'
   call MatchHighlight('Label', 'Normal', ['ctermfg', 'guifg'])
 endif
 highlight WarningMsg ctermbg=red guibg=red
+"always have a black background because other colors look bad
 highlight Normal ctermbg=black guibg=black
-"use Normal bg default from tender as Visual bg
-highlight Visual ctermbg=235 guibg=#282828
 "use LineNr bg default from made_of_code
 highlight LineNr ctermbg=17 guibg=#212231
 "}}}
