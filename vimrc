@@ -259,6 +259,9 @@ let g:ale_python_pylint_change_directory = 0
 
 "Make ale show linter name
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+
+"Make ale use underlines instead of highlights
+highlight ALEError ctermbg=none cterm=underline
 "}}}
 
 "custom commands {{{
