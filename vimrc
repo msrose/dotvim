@@ -226,6 +226,8 @@ endif
 
 "plugin settings {{{
 
+let NERDTreeShowHidden=1
+
 "configure vim-signify
 set updatetime=100
 let g:signify_sign_change = '~'
