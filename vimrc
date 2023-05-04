@@ -260,6 +260,12 @@ let g:ale_python_pylint_change_directory = 0
 "Make ale show linter name
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 
+"Use eslint_d if it exists
+if executable('eslint_d')
+  let g:ale_javascript_eslint_executable = 'eslint_d'
+  let g:ale_javascript_eslint_use_global = 1
+endif
+
 "Make ale use underlines instead of highlights
 highlight ALEError ctermbg=none cterm=underline
 "}}}
