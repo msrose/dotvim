@@ -36,6 +36,9 @@ function! QuickfixToggle()
 endfunction
 
 function! LinterStatus() abort
+  if !PluginsInstalled()
+    return 'NOALE'
+  endif
   let counts = ale#statusline#Count(bufnr(''))
   let errors = counts.error + counts.style_error
   let warnings = counts.total - errors
@@ -47,3 +50,7 @@ function! SynGroup()
     let l:s = synID(line('.'), col('.'), 1)
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
+
+function! PluginsInstalled()
+  return isdirectory("plugged")
+endfunction

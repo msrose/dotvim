@@ -18,7 +18,8 @@ set noerrorbells visualbell t_vb=
 "colorscheme {{{
 set t_Co=256
 let s:colors_name = 'made_of_code' "Others: 'tender', '256-grayvim'
-execute 'colorscheme ' . s:colors_name
+"If colorschemes haven't been installed, fail silently
+execute 'silent! colorscheme ' . s:colors_name
 let g:colors_name = s:colors_name
 
 "overrides for colorschemes
@@ -91,14 +92,22 @@ highlight StatusLine ctermfg=white guifg=white
 highlight User1 ctermbg=blue ctermfg=black guibg=blue guifg=white
 highlight User2 ctermfg=green ctermbg=darkgray guifg=green guibg=NONE
 set laststatus=2
-set statusline=%1*%{fugitive#statusline()}%*
+if PluginsInstalled()
+  set statusline=%1*%{fugitive#statusline()}%*
+else
+  set statusline=$%{'NOFUGITIVE'}
+endif
 set statusline+=%2*\ %f\ %* "filename
 set statusline+=%y          "filetype
 set statusline+=%m          "modified flag
 set statusline+=%r          "read-only flag
 set statusline+=\ %#warningmsg#%{LinterStatus()}%*
 set statusline+=%=          "move to right
-set statusline+=%{gutentags#statusline()}
+if PluginsInstalled()
+  set statusline+=%{gutentags#statusline()}
+else
+  set statusline+=%{'NOGUTENTAGS'}
+endif
 set statusline+=\ %c:       "current column
 set statusline+=%l/         "current line
 set statusline+=%-10L       "total line
