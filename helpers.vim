@@ -52,5 +52,5 @@ function! SynGroup()
 endfun
 
 function! PluginsInstalled()
-  return isdirectory("plugged")
+  return isdirectory($HOME . "/.vim/plugged")
 endfunction
