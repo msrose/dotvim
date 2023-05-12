@@ -260,6 +260,9 @@ let g:ale_python_pylint_change_directory = 0
 "Make ale show linter name
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 
+"Only show virtual error text for current cursor line
+let g:ale_virtualtext_cursor = 'current'
+
 "Use eslint_d if it exists
 if executable('eslint_d')
   let g:ale_javascript_eslint_executable = 'eslint_d'
@@ -299,6 +302,7 @@ nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>p :ALEFix eslint<CR>
 nnoremap <C-f> :Gg <cword><CR>
+nnoremap <F10> :Git blame<CR>
 "}}}
 
 "custom mappings {{{
