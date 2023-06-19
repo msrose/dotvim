@@ -31,4 +31,5 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vim-emoji'
+Plug 'tpope/vim-dadbod'
 call plug#end()
