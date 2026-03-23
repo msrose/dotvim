@@ -32,4 +32,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vim-emoji'
 Plug 'tpope/vim-dadbod'
+Plug 'habamax/vim-godot'
+Plug 'https://codeberg.org/ziglang/zig.vim'
 call plug#end()

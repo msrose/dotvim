@@ -280,6 +280,9 @@ endif
 
 "Make ale use underlines instead of highlights
 highlight ALEError ctermbg=none cterm=underline
+
+"Disable auto-formatting on save for zig
+let g:zig_fmt_autosave = 0
 "}}}
 
 "custom commands {{{
@@ -309,7 +312,7 @@ nnoremap <silent> <leader>g :FZFGFiles?<CR>
 nnoremap <silent> <leader>t :Tagbar<CR>
 nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>p :ALEFix eslint<CR>
+nnoremap <silent> <leader>p :ALEFix eslint prettier<CR>
 nnoremap <C-f> :Gg <cword><CR>
 nnoremap <F10> :Git blame<CR>
 "}}}
