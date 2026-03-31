@@ -230,6 +230,12 @@ if has('autocmd')
     autocmd FileType qf wincmd J
   augroup END
   "}}}
+
+  augroup asm "{{{
+    autocmd!
+    autocmd BufRead,BufNewFile *.s set filetype=asm
+  augroup END
+  "}}}
 endif
 "}}}
 
@@ -280,9 +286,21 @@ endif
 
 "Make ale use underlines instead of highlights
 highlight ALEError ctermbg=none cterm=underline
+highlight ALEWarning ctermbg=none cterm=underline
+highlight link ALEErrorSign SpellBad
+highlight link ALEWarningSign SpellCap
+
+"Enable LSP for JS/TS via tsserver
+let g:ale_linters = {
+  \ 'javascript': ['tsserver', 'eslint'],
+  \ 'typescript': ['tsserver', 'eslint'],
+  \ }
 
 "Disable auto-formatting on save for zig
 let g:zig_fmt_autosave = 0
+
+"Enable 'strict mode' for C
+let g:ale_c_cc_options = '-Wall -Wextra -pedantic'
 "}}}
 
 "custom commands {{{
@@ -313,6 +331,10 @@ nnoremap <silent> <leader>t :Tagbar<CR>
 nnoremap <silent> <leader>be :ToggleBufExplorer<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>p :ALEFix eslint prettier<CR>
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gr :ALEFindReferences<CR>
+nnoremap <silent> K :ALEHover<CR>
+nnoremap <silent> <leader>rn :ALERename<CR>
 nnoremap <C-f> :Gg <cword><CR>
 nnoremap <F10> :Git blame<CR>
 "}}}
@@ -325,7 +347,6 @@ vnoremap ; :
 vnoremap : ;
 nnoremap j gj
 nnoremap k gk
-nnoremap K i<CR><Esc>k$
 nnoremap Y y$
 nnoremap <Backspace> <C-^>
 nnoremap <silent> <leader>l :set list!<CR>
